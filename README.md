@@ -1,24 +1,25 @@
-# README
+# Active Storage Object Storage Demo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is to demonstrate the behaviour described in
+https://stackoverflow.com/posts/77757586
 
-Things you may want to cover:
+## use the application
 
-* Ruby version
+```bash
+# copy and adjust .env.example as .env
+cp .env.example .env
 
-* System dependencies
+# setup database
+rails db:setup
 
-* Configuration
+# start rails server
+rails s
+```
 
-* Database creation
+Go to http://localhost:3000/users and create a user and then destroy it.
 
-* Database initialization
+Follow the logs to see the error
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+ActiveJob] [ActiveStorage::PurgeJob] [c1abff82-b191-4508-b89b-3f2c0dd5c9a6] Error performing ActiveStorage::PurgeJob (Job ID: c1abff82-b191-4508-b89b-3f2c0dd5c9a6) from Async(default) in 122.91ms: Aws::S3::Errors::NoSuchKey (Aws::S3::Errors::NoSuchKey):
+```
